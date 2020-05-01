@@ -1,14 +1,67 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import HomePage from './pages/homepage/HomePage.component'
 import ShopPage from './pages/shop/shop.component'
 import Header from './components/header/header.component'
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import {  auth } from './firebase/firebase.utils'
+
 import './App.css'
 
 
 
-function App() {
+
+const App = () => {
+
+  const [user, setUser] = useState({ cuurentUser: null });
+
+  function onAuthStateChange(callback) {
+    return auth.onAuthStateChanged(user => {
+      if (user) {
+        callback({currentUser: user});
+      } else {
+        callback({currentUser: null});
+      }
+    });
+  }
+
+    useEffect(() => {
+      const unsubscribe = onAuthStateChange(setUser);
+      return () => {
+        unsubscribe();
+
+      };
+    }, []);
+
+    // console.log(user);
+
+
+
+
+  // constructor() {
+  //   super()
+  //   this.state = {
+  //     currentUser: null
+  //   }
+  // }
+
+  // unsubscribeFromAuth = null
+
+  // componentDidMount() {
+  //   auth.onAuthStateChanged(user => {
+  //     this.setState({ currentUser: user })
+
+  //     // console.log(user);
+
+  //   })
+  // }
+
+  // componentWillUnmount(){
+  //   this.unsubscribeFromAuth()
+  // }
+
+// render() {
+
   return (
     <div className = 'container'>
     <Header/>
@@ -19,6 +72,7 @@ function App() {
       </Switch>
     </div>
   );
+// }
 }
 
-export default App;
+export default App
