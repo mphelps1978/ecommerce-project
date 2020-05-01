@@ -35,33 +35,6 @@ const App = () => {
 
     // console.log(user);
 
-
-
-
-  // constructor() {
-  //   super()
-  //   this.state = {
-  //     currentUser: null
-  //   }
-  // }
-
-  // unsubscribeFromAuth = null
-
-  // componentDidMount() {
-  //   auth.onAuthStateChanged(user => {
-  //     this.setState({ currentUser: user })
-
-  //     // console.log(user);
-
-  //   })
-  // }
-
-  // componentWillUnmount(){
-  //   this.unsubscribeFromAuth()
-  // }
-
-// render() {
-
   return (
     <div className = 'container'>
     <Header/>
