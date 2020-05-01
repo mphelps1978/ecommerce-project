@@ -6,7 +6,7 @@ import './header.styles.scss'
 import {ReactComponent as Logo } from '../../assets/crown.svg'
 
 const Header = ({ currentUser, name }) => {
-  console.log(`on Header Component: ${currentUser}, ${name}`);
+  // console.log(`on Header Component: ${currentUser}, ${name}`);
   // const displayName =
 
   return (
@@ -32,7 +32,6 @@ const Header = ({ currentUser, name }) => {
 
 
       </div>
-
     </div>
   );
 };
