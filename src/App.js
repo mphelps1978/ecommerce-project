@@ -4,7 +4,7 @@ import HomePage from './pages/homepage/HomePage.component'
 import ShopPage from './pages/shop/shop.component'
 import Header from './components/header/header.component'
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import {  auth } from './firebase/firebase.utils'
+import {  auth, createUserProfileDocument } from './firebase/firebase.utils'
 import './firebase/firebase.utils'
 
 import './App.css'
@@ -22,13 +22,17 @@ const App = () => {
 
 
   function onAuthStateChange(callback) {
-    return auth.onAuthStateChanged(user => {
+    return auth.onAuthStateChanged(async user => {
       if (user) {
-        callback({
+          callback({
           currentUser: user,
           displayName: user.displayName
-        });
-      } else {
+        },
+        createUserProfileDocument(user),
+        // console.log('user: ', user)
+        )
+      }
+      else {
         callback({
           currentUser: null,
           displayName: ''
@@ -40,6 +44,7 @@ const App = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChange(setActiveUser);
     return () => {
+
       unsubscribe();
 
     };
