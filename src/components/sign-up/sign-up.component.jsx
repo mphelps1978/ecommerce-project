@@ -41,7 +41,7 @@ class SignUp extends React.Component {
         </FormInput>
 
       </form>
-    
+
     </div>
   )
 
