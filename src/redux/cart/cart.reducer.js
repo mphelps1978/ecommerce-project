@@ -1,5 +1,5 @@
-import  CartActionTypes from '../../types/cart/cart.types'
-import { addItemToCart } from '../../utils/cart.utils'
+import  CartActionTypes from './cart.types'
+import { addItemToCart } from '../utils/cart.utils'
 
 const INITIAL_STATE = {
   hidden: true,
